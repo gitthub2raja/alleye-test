@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alleye</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+    <script>
+(function() {
+  // Clean ALL Supabase keys automatically
+  const supabasePrefix = "sb-";
+
+  for (let i = 0; i < localStorage.length; i++) {
+    try {
+      const key = localStorage.key(i);
+      if (!key) continue;
+
+      // Only check Supabase keys (sb-*)
+      if (key.startsWith(supabasePrefix)) {
+        const val = localStorage.getItem(key);
+        if (!val) continue;
+        // Try parsing (Supabase always stores JSON)
+        JSON.parse(val);
+      }
+    } catch (e) {
+      console.warn("⚠️ LocalStorage Heal: Removing corrupted key:", key);
+      localStorage.removeItem(key);
+    }
+  }
+})();
+</script>
+
+    
+<!-- Libraries for report generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script type="module" crossorigin src="/assets/index-B1M48IIc.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CPRDUuem.css">
+</head>
+  <body class="font-sans">
+    <div id="root"></div>
+</body>
+</html>
