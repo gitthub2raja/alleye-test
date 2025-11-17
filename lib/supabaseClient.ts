@@ -1,40 +1,21 @@
 import { createClient } from "@supabase/supabase-js";
 
-// ----------------------------------------------------
-//  ENV VARIABLES (VITE PREFIX REQUIRED)
-// ----------------------------------------------------
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error(
-    "❌ Supabase environment variables missing. Make sure you have:\n" +
-      "VITE_SUPABASE_URL=...\n" +
-      "VITE_SUPABASE_ANON_KEY=...\n" +
-      "in your .env.local file."
-  );
+if (!supabaseUrl) {
+  throw new Error("Missing VITE_SUPABASE_URL in .env");
 }
 
-// ----------------------------------------------------
-//  SAFE FETCH WRAPPER (Fixes Chrome/Brave Race Issues)
-// ----------------------------------------------------
-const safeFetch = (input: RequestInfo | URL, init?: RequestInit) =>
-  fetch(input, init).catch((err) => {
-    console.warn("⚠️ Global fetch error intercepted:", err);
-    throw err;
-  });
+if (!supabaseAnonKey) {
+  throw new Error("Missing VITE_SUPABASE_ANON_KEY in .env");
+}
 
-// ----------------------------------------------------
-//  SUPABASE CLIENT (Most stable configuration)
-// ----------------------------------------------------
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
-    persistSession: true,
+    storage: localStorage,
     autoRefreshToken: true,
+    persistSession: true,
     detectSessionInUrl: true,
-    storage: localStorage, // more stable than sessionStorage for SPA
-  },
-  global: {
-    fetch: safeFetch,
   },
 });
