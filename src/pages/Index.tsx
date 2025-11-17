@@ -12,7 +12,7 @@ const Index = () => {
   useEffect(() => {
     // Redirect authenticated users to dashboard
     if (session) {
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     }
   }, [session, navigate]);
   return (

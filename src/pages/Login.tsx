@@ -39,7 +39,7 @@ const Login = () => {
           title: "Login successful",
           description: "Welcome back!",
         });
-        navigate("/dashboard");
+        navigate("/dashboard", { replace: true });
       }
     } catch (error: any) {
       console.error('Login error:', error);
@@ -80,7 +80,7 @@ const Login = () => {
           description: "Check your email to verify your account.",
         });
         // Auto-redirect to dashboard after signup
-        setTimeout(() => navigate("/dashboard"), 2000);
+        setTimeout(() => navigate("/dashboard", { replace: true }), 2000);
       }
     } catch (error: any) {
       console.error('Signup error:', error);

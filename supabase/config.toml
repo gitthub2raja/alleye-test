@@ -1,2 +1,4 @@
+project_id = "vwwninyibcuwogzejqrb"
+
 [functions.get-video-url]
 verify_jwt = true

@@ -94,7 +94,7 @@ const Admin = () => {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    navigate("/");
+    navigate("/", { replace: true });
   };
 
   const handleAddVideo = async (data: VideoFormData) => {

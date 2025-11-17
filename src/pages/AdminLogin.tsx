@@ -48,7 +48,7 @@ const AdminLogin = () => {
             title: "Admin access granted",
             description: "Welcome to the admin panel",
           });
-          navigate("/admin");
+          navigate("/admin", { replace: true });
         } else {
           // Not an admin, sign them out
           await supabase.auth.signOut();
@@ -57,6 +57,7 @@ const AdminLogin = () => {
             description: "This portal is for administrators only",
             variant: "destructive",
           });
+          navigate("/admin-login", { replace: true });
         }
       }
     } catch (error: any) {
