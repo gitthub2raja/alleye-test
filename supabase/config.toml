@@ -1,0 +1,2 @@
+[functions.get-video-url]
+verify_jwt = true

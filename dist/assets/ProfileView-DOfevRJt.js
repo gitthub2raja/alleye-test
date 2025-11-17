@@ -1,1 +1,0 @@
-import{j as r}from"./index-jQJV2EFP.js";import{P as s,a as t,b as a,L as i}from"./LogoutButton-ug9XX9ug.js";const f=({user:e,onLogout:o})=>r.jsxs(s,{title:"My Profile",children:[r.jsx(t,{user:e}),r.jsx(a,{user:e,allowPasswordChange:!0}),r.jsx("div",{className:"border-t border-border mt-6 pt-6 flex justify-end",children:r.jsx(i,{onLogout:o})})]});export{f as default};
